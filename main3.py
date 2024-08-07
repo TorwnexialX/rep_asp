@@ -12,7 +12,10 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, DataCollatorForSeq
 model_name = "gpt2-xl" 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForCausalLM.from_pretrained(model_name)
-
+if tokenizer.pad_token is None:
+    tokenizer.add_special_tokens({'pad_token': '[PAD]'})
+    model.resize_token_embeddings(len(tokenizer))
+    
 # data preprocessing
 
 max_length = 384
