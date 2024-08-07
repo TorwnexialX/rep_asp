@@ -9,7 +9,7 @@ raw_datasets = load_dataset("squad")
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, DataCollatorForSeq2Seq, TrainingArguments, Trainer
 
-model_name = "prajjwal1/bert-tiny" 
+model_name = "gpt2-xl" 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForCausalLM.from_pretrained(model_name)
 
