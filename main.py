@@ -83,7 +83,7 @@ def train_p(train_ds, num_epochs, lr):
     loss_func = torch.nn.CrossEntropyLoss()
     ds_iter = iter(train_ds)
     for _ in range(num_epochs):
-        inputs = model.transformer.wte(ds_iter['context'] + ds_iter['question'])
+        inputs = model.transformer.wte(ds_iter['context'] + ' ' + ds_iter['question'])
         inputs = torch.cat([theta_p.unsqueeze(0), inputs], dim=1)
         next(ds_iter)
 
